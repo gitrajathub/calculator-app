@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 
 function Home() {
 
-    const [solution, setSolution] = useState('0'); 
+    const [solution, setSolution] = useState('0');
     const [input, setInput] = useState('');
-
-
+  
     const clear = () => {
         setSolution('0');
-        setInput(''); 
+        setInput('');
       };
 
     
-    const handleNumberClick = (num) => {   
-        if (solution === '0' && num === '0') return; 
-        setInput(input + num); 
+    const handleNumberClick = (num) => {
+        if (solution === '0' && num === '0') return;
+        setInput(input + num);
         if (solution === '0') {
         setSolution(num);
         } else {
@@ -22,16 +21,16 @@ function Home() {
         }
     };
 
-    const handleOperatorClick = (operator) => { 
-        if (input !== '') {  
-        setInput('');  
-        setSolution(solution + operator); 
+    const handleOperatorClick = (operator) => {
+        if (input !== '') {
+        setInput('');
+        setSolution(solution + operator);
         }
     };
 
     const round = () => {
-        setInput('');
-        setSolution((parseFloat(solution)).toString());
+    setInput('');
+    setSolution(Math.round(parseFloat(solution)).toString());
     };
 
 
@@ -39,7 +38,7 @@ function Home() {
         if (input !== '') {
             setInput('');
             try {
-                setSolution(eval(solution).toString()); 
+                setSolution(eval(solution).toString());
             } catch (error) {
                 setSolution('Error');
             }
